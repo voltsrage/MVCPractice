@@ -40,5 +40,11 @@ namespace FirstApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Denominations(int amount)
+        {
+            ViewBag.Amount = amount;
+            return View();
+        }
     }
 }

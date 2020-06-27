@@ -90,6 +90,8 @@ namespace FirstApp.Controllers
             ViewBag.StudentName = "Scott";
             ViewBag.Marks = 80.0;
             ViewBag.Year = "Grade 6";
+            ViewBag.Subjects = new List<string>() { "Maths","English","Chinese" };
+            ViewBag.SubjectGrades = new List<int>() { 90, 70, 80 };
 
             return View();
         }

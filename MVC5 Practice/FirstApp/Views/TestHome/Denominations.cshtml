@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <h1>Currency Denominations</h1>
+    @{
+        List<int> denominations = new List<int>() { 1000, 500, 100, 10, 1 };
+        List<int> currCount = new List<int>();
+
+        int num = ViewBag.Amount;
+
+        if(num > 0)
+        {
+            foreach (int denom in denominations)
+            {
+                currCount.Add(num / denom);
+                num = num % denom;
+            }
+        }
+    }
+    <div class="container-fluid">
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td><b>Denomination</b></td>
+                        <td><b>Count</b></td>
+                        <td><b>Amount</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < currCount.Count; i++)
+                    {
+                        <tr>
+                            <td>@denominations[i]</td>
+                            <td>@currCount[i]</td>
+                            <td>@(denominations[i]*currCount[i])</td>
+                        </tr>
+                    }
+                </tbody>
+               
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>

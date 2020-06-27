@@ -24,6 +24,17 @@
             </li>
         </ul>
     </nav>
+    @{ 
+        string StudentResult;
+        if(ViewBag.Marks >= 70)
+        {
+            StudentResult = "Pass";
+        }
+        else
+        {
+            StudentResult = "Fail";
+        }
+    }
     <div class="container-fluid">
         <div class="col-md-4">
             <table class="table">
@@ -38,6 +49,42 @@
                 <tr>
                     <td>Marks</td>
                     <td>@ViewBag.Marks</td>
+                </tr>
+                <tr>
+                    <td>Student Result</td>
+                    <td>@StudentResult</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @if (StudentResult == "Pass")
+                        {
+                            <span class="text-success">Congratulations!</span>
+                            @ViewBag.StudentName
+                            <span class="text-success">,you did amazingly well</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Better luck next time!</span>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            @foreach (var item in ViewBag.Subjects)
+                            {
+                                <li>@item</li>
+                            }
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var item in ViewBag.SubjectGrades)
+                            {
+                                <li>@item</li>
+                            }
+                        </ul>
+                    </td>
                 </tr>
             </table>
         </div>
