@@ -83,5 +83,15 @@ namespace FirstApp.Controllers
                 return Redirect(urlLink);
             }            
         }
+
+        public ActionResult StudentDetails()
+        {
+            ViewBag.StudentId = 101;
+            ViewBag.StudentName = "Scott";
+            ViewBag.Marks = 80.0;
+            ViewBag.Year = "Grade 6";
+
+            return View();
+        }
     }
 }

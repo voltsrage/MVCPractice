@@ -123,6 +123,7 @@
     <Content Include="ChTest.pdf" />
     <Content Include="EngTest.pdf" />
     <Content Include="MathTest.pdf" />
+    <Content Include="sample.pdf" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -218,6 +219,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +233,9 @@
     <Content Include="Scripts\jquery-3.5.1.min.map" />
     <Content Include="Views\Account\InvalidLogin.cshtml" />
     <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\TestHome\About.cshtml" />
+    <Content Include="Views\TestHome\Login.cshtml" />
+    <Content Include="Views\Home\StudentDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
