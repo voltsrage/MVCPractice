@@ -1,4 +1,4 @@
-﻿
+﻿@model List<FirstApp.Models.Product>
 @{
     ViewBag.Title = "Index";
 }
@@ -12,6 +12,7 @@
 }
 
 <h2>Subjects</h2>
+<a href="@Url.Action("Create","Product")">Create Product</a>
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in ViewBag.products)
+        @foreach (var item in Model)
         {
             <tr>
                 <td><a href="/product/details/@item.SubjectId">@item.SubjectId</a></td>

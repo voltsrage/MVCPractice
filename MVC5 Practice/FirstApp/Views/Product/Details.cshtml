@@ -1,4 +1,4 @@
-﻿
+﻿@model FirstApp.Models.Product
 @{
     ViewBag.Title = "Details";
 }
@@ -8,15 +8,15 @@
 <table class="table">
     <tr>
         <th>Subject ID</th>
-        <td>@ViewBag.MatchingSubject.SubjectId</td>
+        <td>@Model.SubjectId</td>
     </tr>
     <tr>
         <th>Subject Name</th>
-        <td>@ViewBag.MatchingSubject.SubjectName</td>
+        <td>@Model.SubjectName</td>
     </tr>
     <tr>
         <th>Passing Grade</th>
-        <td>@ViewBag.MatchingSubject.PassingGrade</td>
+        <td>@Model.PassingGrade</td>
     </tr>
 </table>
 

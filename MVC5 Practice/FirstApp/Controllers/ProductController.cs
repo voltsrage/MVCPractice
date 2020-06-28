@@ -18,8 +18,8 @@ namespace FirstApp.Controllers
                 new Product() {SubjectId = "Math",SubjectName = "Mathematics",PassingGrade=70},
                 new Product() {SubjectId = "Ch",SubjectName = "Chinese",PassingGrade=65}
             };
-            ViewBag.products = products;
-            return View();
+           
+            return View(products);
         }
 
         public ActionResult Details(string id)
@@ -38,8 +38,19 @@ namespace FirstApp.Controllers
                     matchingSubject = item;
                 }
             }
-            ViewBag.MatchingSubject = matchingSubject;
+            
 
+            return View(matchingSubject);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Product sub)
+        {
             return View();
         }
     }

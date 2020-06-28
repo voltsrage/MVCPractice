@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FirstApp.Models;
 
 namespace FirstApp
 {
@@ -13,6 +14,7 @@ namespace FirstApp
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(Student), new CustomBinder());
         }
     }
 }
