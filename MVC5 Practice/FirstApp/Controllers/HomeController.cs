@@ -30,10 +30,37 @@ namespace FirstApp.Controllers
             return View();
         }
 
+        public ActionResult GetProductId(string id)
+        {
+            var products = new[]
+            {
+                new{ProductId = 1,ProductName = "English",PassingGrade=80},
+                new{ProductId  = 2,ProductName = "Mathematics",PassingGrade=70},
+                new{ProductId  = 3,ProductName = "Chinese",PassingGrade=65}
+            };
+
+            if(id == null)
+            {
+                return Content("Please enter a subject id" );
+            }
+            else
+            {
+                int prodId = 0;
+                foreach(var pro in products)
+                {
+                    if(pro.ProductName == id)
+                    {
+                        prodId = pro.ProductId;
+                    }
+                }
+                return Content(prodId.ToString());
+            }
+        }
 
         //Using Content Type to get content from a list or db
         //Use Content when you need to send a specific type of content such as plain text
-        public ActionResult GetSubjectName(string SubId)
+        [Route("home/GetSubjectName/{subId}")]
+        public ActionResult GetSubjectName(string subId)
         {
             var subjects = new[]
             {
@@ -42,18 +69,27 @@ namespace FirstApp.Controllers
                 new{SubId = "Ch",SubName = "Chinese",PassingGrade=65}
             };
 
-            string matchSubName = null;
-
-            foreach(var item in subjects)
+            
+            if(subId == null)
             {
-                if(SubId == item.SubId)
-                {
-                    matchSubName = item.SubName;
-                }
+                return Content("Please enter a subject id"+ subId);
             }
+            else
+            {
+                string matchSubName = "";
+                foreach (var item in subjects)
+                {
+                    if (subId == item.SubId)
+                    {
+                        matchSubName = item.SubName;
+                    }
+
+                }
+                return Content(matchSubName);
+            }           
 
             //return new ContentResult() { Content = matchSubName, ContentType = "text/plain" };
-            return Content(matchSubName, "text/plain");
+            
         }
 
         //File Action
