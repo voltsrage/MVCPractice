@@ -95,5 +95,25 @@ namespace FirstApp.Controllers
 
             return View();
         }
+
+        public ActionResult RequestExample()
+        {
+            ViewBag.Url = Request.Url;
+            ViewBag.PhysicalPath = Request.PhysicalApplicationPath;
+            ViewBag.Path = Request.Path;
+            ViewBag.BrowserType = Request.Browser.Type;
+            ViewBag.QueryString = Request.QueryString["n"];
+            ViewBag.HttpMethod = Request.HttpMethod;
+            ViewBag.Headers = Request.Headers["Accept"];
+
+            return View();
+        }
+
+        public ActionResult ResponseExample()
+        {
+            Response.Write("Hi, just responding to your request, browser");
+
+            return View();
+        }
     }
 }
