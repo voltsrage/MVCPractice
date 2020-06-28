@@ -212,7 +212,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\OurCompanyProducts.cshtml" />
-    <Content Include="Views\Home\Contacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -239,6 +238,13 @@
     <Content Include="Views\TestHome\Denominations.cshtml" />
     <Content Include="Views\Home\RequestExample.cshtml" />
     <Content Include="Views\Home\ResponseExample.cshtml" />
+    <Content Include="Views\Shared\Contacts.cshtml" />
+    <Content Include="Views\Shared\_LayoutView.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_LayoutView2.cshtml" />
+    <Content Include="Views\Home\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\ListPartialView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

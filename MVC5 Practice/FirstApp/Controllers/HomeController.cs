@@ -21,8 +21,15 @@ namespace FirstApp.Controllers
 
         public ActionResult Contacts()
         {
+            ViewBag.Phone = "886-222-222-2222";
             return View();
         }
+
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
 
         //Using Content Type to get content from a list or db
         //Use Content when you need to send a specific type of content such as plain text

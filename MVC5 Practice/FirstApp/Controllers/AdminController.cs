@@ -13,5 +13,11 @@ namespace FirstApp.Controllers
         {
             return View();
         }
+
+        public ActionResult Contacts()
+        {
+            ViewBag.Phone = "886-111-111-1111";
+            return View();
+        }
     }
 }

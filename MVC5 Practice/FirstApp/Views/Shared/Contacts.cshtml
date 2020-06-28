@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+@{
+    ViewBag.Message = "Feel free to contacts us 24/7";
+}
+@section SideBarOptions{
+    <a href="#" class="list-group-item text-white" style="background-color:transparent">HR</a>
+    <a href="#" class="list-group-item text-white" style="background-color:transparent">Sales</a>
+    <a href="#" class="list-group-item text-white" style="background-color:transparent">Marketing</a>
+}
+
+    <div class="card">
+        <div class="card-header"><h1>Trent Bas Educational Enterprises</h1></div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <p>Phone: @ViewBag.Phone</p>
+                <p>Fax: 886-000-000-0000</p>
+                <p>Email: trentbase@gmail.com</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            @{
+                ViewBag.ListTitle = "Contact Details";
+                ViewBag.Items = new List<string>() { "English Dept", "Mathematics Dept", "Chinese Dept" };
+                Html.RenderPartial("ListPartialView");
+            }
+        </div>
+    </div>
+

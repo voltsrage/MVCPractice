@@ -1,53 +1,40 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = "RequestExample";
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+}
+<div class="col-md-6">
+    <table class="table">
+        <tr>
+            <td>Url</td>
+            <td>@ViewBag.Url</td>
+        </tr>
+        <tr>
+            <td>PhysicalPath</td>
+            <td>@ViewBag.PhysicalPath</td>
+        </tr>
+        <tr>
+            <td>Path</td>
+            <td>@ViewBag.Path</td>
+        </tr>
+        <tr>
+            <td>BrowserType</td>
+            <td>@ViewBag.BrowserType</td>
+        </tr>
+        <tr>
+            <td>QueryString</td>
+            <td>@ViewBag.QueryString</td>
+        </tr>
+        <tr>
+            <td>HttpMethod</td>
+            <td>@ViewBag.HttpMethod</td>
+        </tr>
+        <tr>
+            <td>Headers</td>
+            <td>@ViewBag.Headers</td>
+        </tr>
+    </table>
+</div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.5.1.js"></script>
-    <script src="~/Scripts/umd/popper.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-</head>
-<body>
-    
-    <div class="container-fluid">
-        <div class="col-md-6">
-            <table class="table">
-                <tr>
-                    <td>Url</td>
-                    <td>@ViewBag.Url</td>
-                </tr>
-                <tr>
-                    <td>PhysicalPath</td>
-                    <td>@ViewBag.PhysicalPath</td>
-                </tr>
-                <tr>
-                    <td>Path</td>
-                    <td>@ViewBag.Path</td>
-                </tr>
-                <tr>
-                    <td>BrowserType</td>
-                    <td>@ViewBag.BrowserType</td>
-                </tr>
-                <tr>
-                    <td>QueryString</td>
-                    <td>@ViewBag.QueryString</td>
-                </tr>
-                <tr>
-                    <td>HttpMethod</td>
-                    <td>@ViewBag.HttpMethod</td>
-                </tr>
-                <tr>
-                    <td>Headers</td>
-                    <td>@ViewBag.Headers</td>
-                </tr>
-            </table>
-        </div>
-
-    </div>
-</body>
-</html>
 
 
 
