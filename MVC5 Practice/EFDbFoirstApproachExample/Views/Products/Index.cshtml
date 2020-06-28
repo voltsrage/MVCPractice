@@ -1,0 +1,43 @@
+﻿@model List<EFDbFoirstApproachExample.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Products</h2>
+
+<form class="form-inline" action="/products/index">
+    <label for="search">Search </label>
+    <input type="search" class="form-control" id="search" name="search" placeholder="Search" value="@ViewBag.search"/>
+    <button type="submit" class="btn btn-primary">GO</button>
+</form><br />
+
+<table class="table">
+    <tr>
+        <td>Product ID</td>
+        <td>Product Name</td>
+        <td>Price</td>
+        <td>Date of Purchase</td>
+        <td>Availability Status</td>
+        <td>Category ID</td>
+        <td>Brand ID</td>
+        <td>Active</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.ProductID </td>
+        <td>@item.ProductName</td>
+        <td>@item.Price.Value.ToString("C")</td>
+        <td>@item.DateOfPurchase.Value.ToShortDateString()</td>
+        <td>@item.AvailabilityStatus</td>
+        <td>@item.CategoryID</td>
+        <td>@item.BrandID</td>
+        <td>@item.Active</td>
+        <td>
+            <a href="/products/details/@item.ProductID">Details</a>
+        </td>
+    </tr>
+    }
+</table>
+
+<a class="btn btn-success" href="/products/create">Create New Product</a>
