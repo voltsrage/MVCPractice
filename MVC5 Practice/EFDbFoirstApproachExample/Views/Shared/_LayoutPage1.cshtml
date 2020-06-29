@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-3.5.1.js"></script>
     <script src="~/Scripts/umd/popper.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
@@ -34,15 +35,15 @@
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-1 text-white" style="background-color:#fa8405;min-height:1050px;padding:0px">
+            @*<div class="col-1 text-white" style="background-color:#fa8405;min-height:1050px;padding:0px">
                 <div class="list-group">
                     <a href="#" class="list-group-item text-white" style="background-color:transparent">Categories</a>
                     <a href="#" class="list-group-item text-white" style="background-color:transparent">Brands</a>
                     <a href="#" class="list-group-item text-white" style="background-color:transparent">Products</a>
                     @RenderSection("SideBarOptions", required: false)
                 </div>
-            </div>
-            <div class="col-11" style="min-height:610px">
+            </div>*@
+            <div class="col-12" style="min-height:610px">
                 @RenderBody()
             </div>
         </div>
