@@ -18,8 +18,8 @@
         <td>Price</td>
         <td>Date of Purchase</td>
         <td>Availability Status</td>
-        <td>Category ID</td>
-        <td>Brand ID</td>
+        <td>Category</td>
+        <td>Brand</td>
         <td>Active</td>
     </tr>
     @foreach (var item in Model)
@@ -28,13 +28,15 @@
         <td>@item.ProductID </td>
         <td>@item.ProductName</td>
         <td>@item.Price.Value.ToString("C")</td>
-        <td>@item.DateOfPurchase.Value.ToShortDateString()</td>
+        <td>@item.DateOfPurchase.Value.ToString("yyyy-MM-dd")</td>
         <td>@item.AvailabilityStatus</td>
-        <td>@item.CategoryID</td>
-        <td>@item.BrandID</td>
+        <td>@item.Category.CategoryName</td>
+        <td>@item.Brand.BrandName</td>
         <td>@item.Active</td>
         <td>
-            <a href="/products/details/@item.ProductID">Details</a>
+            <a href="/products/details/@item.ProductID">Details</a> |
+            <a href="/products/edit/@item.ProductID">Edit</a> |
+            <a href="/products/delete/@item.ProductID">Delete</a>
         </td>
     </tr>
     }
