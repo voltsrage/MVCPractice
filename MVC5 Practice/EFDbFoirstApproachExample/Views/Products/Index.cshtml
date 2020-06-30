@@ -13,6 +13,9 @@
 
 <table class="table">
     <tr class="table-secondary">
+        <th width="10%">
+            Photo
+        </th>
         <th style="width:10%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
@@ -67,10 +70,10 @@
                 }
             }
         </th>
-        <th style="width:15%">
+        <th style="width:10%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
-                <a href="/products/index?SortColumn=DateOfPurchase&IconClass=fa-sort-asc&PageNo=1">Date Of Purchase</a>
+                <a href="/products/index?SortColumn=DateOfPurchase&IconClass=fa-sort-asc&PageNo=1">Purchase Date</a>
                 if (ViewBag.SortColumn == "DateOfPurchase")
                 {
                     <i class="fa @ViewBag.IconClass"></i>
@@ -78,17 +81,17 @@
             }
             else
             {
-                <a href="/products/index?SortColumn=DateOfPurchase&IconClass=fa-sort-desc&PageNo=1">Date Of Purchase</a>
+                <a href="/products/index?SortColumn=DateOfPurchase&IconClass=fa-sort-desc&PageNo=1">Purchase Date</a>
                 if (ViewBag.SortColumn == "DateOfPurchase")
                 {
                     <i class="fa @ViewBag.IconClass"></i>
                 }
             }
         </th>
-        <th style="width:15%">
+        <th style="width:10%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
-                <a href="/products/index?SortColumn=AvailabilityStatus&IconClass=fa-sort-asc&PageNo=1">Availability Status</a>
+                <a href="/products/index?SortColumn=AvailabilityStatus&IconClass=fa-sort-asc&PageNo=1">Availability</a>
                 if (ViewBag.SortColumn == "AvailabilityStatus")
                 {
                     <i class="fa @ViewBag.IconClass"></i>
@@ -96,7 +99,7 @@
             }
             else
             {
-                <a href="/products/index?SortColumn=AvailabilityStatus&IconClass=fa-sort-desc&PageNo=1">Availability Status</a>
+                <a href="/products/index?SortColumn=AvailabilityStatus&IconClass=fa-sort-desc&PageNo=1">Availability</a>
                 if (ViewBag.SortColumn == "AvailabilityStatus")
                 {
                     <i class="fa @ViewBag.IconClass"></i>
@@ -162,6 +165,7 @@
     @foreach (var item in Model)
     {
     <tr>
+        <td><img src="data:image;base64,@item.Photo" width="100px" /></td>
         <td>@item.ProductID </td>
         <td>@item.ProductName</td>
         <td>@item.Price.Value.ToString("C")</td>
