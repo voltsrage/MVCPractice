@@ -10,12 +10,12 @@ namespace EFDbFoirstApproachExample.Controllers
 {
     public class ProductsController : Controller
     {
-        
+        TrentBasDB db = new TrentBasDB();
 
         // GET: Products
         public ActionResult Index(string search = "", string SortColumn = "ProductName",string IconClass = "fa-sort-asc",int PageNo = 1)
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             ViewBag.search = search;
             List<Product> products = db.Products.Where(p => p.ProductName.Contains(search)).ToList();
 
@@ -87,14 +87,14 @@ namespace EFDbFoirstApproachExample.Controllers
 
         public ActionResult Details(long id)
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             Product product = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
             return View(product);
         }
 
         public ActionResult Create()
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             ViewBag.Categories = db.Categories.ToList();
             ViewBag.Brands = db.Brands.ToList();
             return View();
@@ -103,7 +103,7 @@ namespace EFDbFoirstApproachExample.Controllers
         [HttpPost]
         public ActionResult Create(Product p)
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             if(Request.Files.Count >=1)
             {
                 var file = Request.Files[0];
@@ -120,7 +120,7 @@ namespace EFDbFoirstApproachExample.Controllers
 
         public ActionResult Edit(long id)
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             ViewBag.Categories = db.Categories.ToList();
             ViewBag.Brands = db.Brands.ToList();
             Product existingProduct = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
@@ -131,7 +131,7 @@ namespace EFDbFoirstApproachExample.Controllers
         [HttpPost]
         public ActionResult Edit(Product p)
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             Product existingProduct = db.Products.Where(prod => prod.ProductID == p.ProductID).FirstOrDefault();
 
             if (Request.Files.Count >= 1)
@@ -161,7 +161,7 @@ namespace EFDbFoirstApproachExample.Controllers
 
         public ActionResult Delete(long id)
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             Product deleteProduct = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
 
             return View(deleteProduct);
@@ -170,7 +170,7 @@ namespace EFDbFoirstApproachExample.Controllers
         [HttpPost]
         public ActionResult Delete(Product p,long id)
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            
             Product deleteProduct = db.Products.Where(prod => prod.ProductID == id).FirstOrDefault();
 
             db.Products.Remove(deleteProduct);

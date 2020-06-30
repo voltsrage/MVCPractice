@@ -12,7 +12,7 @@ namespace EFDbFoirstApproachExample.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            TrentBasDB db = new TrentBasDB();
 
             List<Category> categories = db.Categories.ToList();
             return View(categories);
