@@ -1,4 +1,4 @@
-﻿
+﻿@model EFDbFoirstApproachExample.Models.Product
 @{
     ViewBag.Title = "Create";
 }
@@ -7,48 +7,44 @@
 <form action="/products/create" method="post" enctype="multipart/form-data">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="ProductName">Product Name</label>
-            <input type="text" class="form-control" name="ProductName" id="ProductName" placeholder="Product Name" />
+            @Html.LabelFor(temp => Model.ProductName)
+            @Html.TextBoxFor(temp=>temp.ProductName, new { @class = "form-control" })            
+            @Html.ValidationMessageFor(temp => temp.ProductName)
         </div>
         <div class="form-group col-md-6">
-            <label for="Price">Price</label>
-            <input type="text" class="form-control" name="Price" id="Price" placeholder="Price" />
+            @Html.LabelFor(temp => Model.Price)
+            @Html.TextBoxFor(temp => temp.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Price)
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="DateofPurchase">Date of Purchase</label>
             <input type="date" class="form-control" name="DateofPurchase" id="DateofPurchase" placeholder="Date of Purchase" />
+            @Html.ValidationMessageFor(temp => temp.DateOfPurchase)
         </div>
         <div class="form-group col-md-6">
-            <label for="AvailabilityStatus">Availability Status</label>
-            <select class="form-control" name="AvailabilityStatus" id="AvailabilityStatus">
-                <option value="">Please select</option>
-                <option value="InStock">In Stock</option>
-                <option value="OutOfStock">Out Of Stock</option>
-            </select>
+            @Html.LabelFor(temp => Model.AvailabilityStatus)
+            @Html.DropDownListFor(temp=>Model.AvailabilityStatus, new List<SelectListItem>()
+       {
+           new SelectListItem() {Text="In Stock",Value = "InStock"},
+           new SelectListItem() {Text="Out of Stock",Value = "OutOfStock"}
+       },"Please Select", new { @class="form-control"})
+            @Html.ValidationMessageFor(temp => temp.AvailabilityStatus)
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="CategoryID">Category</label>
-            <select class="form-control" name="CategoryID" id="CategoryID">
-                <option value="">Please select</option>
-                @foreach (var cat in ViewBag.Categories)
-                {
-                    <option value="@cat.CategoryID">@cat.CategoryName</option>
-                }
-            </select>
+            @Html.LabelFor(temp => Model.CategoryID)
+            @Html.DropDownListFor(temp => Model.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"),
+    "Please Select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.CategoryID)
         </div>
         <div class="form-group col-md-6">
-            <label for="BrandID">Brand</label>
-            <select class="form-control" name="BrandID" id="BrandID">
-                <option value="">Please select</option>
-                @foreach (var cat in ViewBag.Brands)
-                {
-                    <option value="@cat.BrandID">@cat.BrandName</option>
-                }
-            </select>
+            @Html.LabelFor(temp => Model.BrandID)
+            @Html.DropDownListFor(temp => Model.BrandID, new SelectList(ViewBag.Brands, "BrandID", "BrandName"),
+    "Please Select", new { @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.BrandID)
         </div>
     </div>
     <div class="form-group">
@@ -63,6 +59,8 @@
             </label>
         </div>
     </div>
+
+    @Html.ValidationSummary()
     <button type="submit" class="btn btn-success">Create</button>
     <a class="btn btn-danger" href="/products/index">Cancel</a>
 </form>

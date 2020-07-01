@@ -104,18 +104,24 @@ namespace EFDbFoirstApproachExample.Controllers
         public ActionResult Create(Product p)
         {
             EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
-            if(Request.Files.Count >=1)
+            if (ModelState.IsValid)
             {
-                var file = Request.Files[0];
-                var imgBytes = new Byte[file.ContentLength];
-                file.InputStream.Read(imgBytes, 0, file.ContentLength);
-                var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
-                p.Photo = base64String;
+                if (Request.Files.Count >= 1)
+                {
+                    var file = Request.Files[0];
+                    var imgBytes = new Byte[file.ContentLength];
+                    file.InputStream.Read(imgBytes, 0, file.ContentLength);
+                    var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
+                    p.Photo = base64String;
+                }
+                db.Products.Add(p);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            
-            db.Products.Add(p);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Edit(long id)
@@ -133,30 +139,36 @@ namespace EFDbFoirstApproachExample.Controllers
         {
             EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
             Product existingProduct = db.Products.Where(prod => prod.ProductID == p.ProductID).FirstOrDefault();
-
-            if (Request.Files.Count >= 1)
+            if (ModelState.IsValid)
             {
-                var file = Request.Files[0];
-                if(file.ContentLength >= 1)
+                if (Request.Files.Count >= 1)
                 {
-                    var imgBytes = new Byte[file.ContentLength];
-                    file.InputStream.Read(imgBytes, 0, file.ContentLength);
-                    var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
-                    existingProduct.Photo = base64String;
-                }                
+                    var file = Request.Files[0];
+                    if (file.ContentLength >= 1)
+                    {
+                        var imgBytes = new Byte[file.ContentLength];
+                        file.InputStream.Read(imgBytes, 0, file.ContentLength);
+                        var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
+                        existingProduct.Photo = base64String;
+                    }
+                }
+
+
+                existingProduct.ProductName = p.ProductName;
+                existingProduct.Price = p.Price;
+                existingProduct.DateOfPurchase = p.DateOfPurchase;
+                existingProduct.CategoryID = p.CategoryID;
+                existingProduct.BrandID = p.BrandID;
+                existingProduct.AvailabilityStatus = p.AvailabilityStatus;
+                existingProduct.Active = p.Active;
+
+                db.SaveChanges();
+                return RedirectToAction("Index", "Products");
             }
-            
-
-            existingProduct.ProductName = p.ProductName;
-            existingProduct.Price = p.Price;
-            existingProduct.DateOfPurchase = p.DateOfPurchase;
-            existingProduct.CategoryID = p.CategoryID;
-            existingProduct.BrandID = p.BrandID;
-            existingProduct.AvailabilityStatus = p.AvailabilityStatus;
-            existingProduct.Active = p.Active;
-
-            db.SaveChanges();
-            return RedirectToAction("Index","Products");
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Delete(long id)
