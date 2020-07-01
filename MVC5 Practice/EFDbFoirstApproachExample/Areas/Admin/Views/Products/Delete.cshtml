@@ -1,11 +1,12 @@
 ﻿@model EFDbFoirstApproachExample.Models.Product
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
 }
 
 <h2>Delete Product</h2>
 
-<form action="/products/delete/@Model.ProductID" method="post">
+<form action="/admin/products/delete/@Model.ProductID" method="post">
     <table class="table">
         <tr>
             <th>Product ID</th>
@@ -24,8 +25,9 @@
             <td>@Model.DateOfPurchase.Value.ToShortDateString()</td>
         </tr>
     </table>
+    <div>Are you sure  you want to delete this product?</div>
     <button type="submit" class="btn btn-danger">Delete</button>
-    <a class="btn btn-danger" href="/products/index">Cancel</a>
+    <a class="btn btn-danger" href="/admin/products/index">Cancel</a>
 </form>
 
 

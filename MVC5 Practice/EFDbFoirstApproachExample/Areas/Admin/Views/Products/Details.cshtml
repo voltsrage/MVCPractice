@@ -1,6 +1,7 @@
 ﻿@model EFDbFoirstApproachExample.Models.Product
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
 }
 
 <h2>Details</h2>
@@ -45,4 +46,4 @@
 
 </table>
 
-<a href="@Url.Action("Index","Products")">Back to Products</a>
+<a href="/admin/products/index">Back to Products</a>

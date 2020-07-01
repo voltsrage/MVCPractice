@@ -5,14 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EFDbFoirstApproachExample.Controllers
+namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
 {
     public class BrandsController : Controller
     {
-        // GET: Brands
+        // GET: Admin/Brands
         public ActionResult Index()
         {
-            EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+            TrentBasDbContext db = new TrentBasDbContext();
             List<Brand> brands = db.Brands.ToList();
             return View(brands);
         }
