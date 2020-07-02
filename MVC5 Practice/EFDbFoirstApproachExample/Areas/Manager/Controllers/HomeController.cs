@@ -5,13 +5,12 @@ using System.Web;
 using System.Web.Mvc;
 using EFDbFoirstApproachExample.Filters;
 
-namespace EFDbFoirstApproachExample.Controllers
+namespace EFDbFoirstApproachExample.Areas.Manager.Controllers
 {
+    [ManagerAuthorization]
     public class HomeController : Controller
     {
-        // GET: Home
-        [MyActionFilter]
-        [MyResultFilter]
+        // GET: Manager/Home
         public ActionResult Index()
         {
             return View();

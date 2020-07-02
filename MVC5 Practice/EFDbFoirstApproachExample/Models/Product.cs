@@ -25,7 +25,7 @@ namespace EFDbFoirstApproachExample.Models
         public Nullable<decimal> Price { get; set; }
 
         [Display(Name = "Date Of Purchase")]
-        [DataType("Date")]
+        [DisplayFormat(DataFormatString ="MM/dd/yyyy",ApplyFormatInEditMode =true)]
         public Nullable<System.DateTime> DateOfPurchase { get; set; }
 
         [Display(Name = "Availability Status")]
@@ -33,14 +33,14 @@ namespace EFDbFoirstApproachExample.Models
 
         [Display(Name = "Category ID")]
         [Required(ErrorMessage = "Category required")]
-        public Nullable<long> CategoryID { get; set; }
+        public long CategoryID { get; set; }
 
         [Display(Name = "Brand ID")]
         [Required(ErrorMessage = "Brand required")]
-        public Nullable<long> BrandID { get; set; }
+        public long BrandID { get; set; }
 
         [Display(Name = "Active")]
-        public Nullable<bool> Active { get; set; }
+        public bool Active { get; set; }
 
         [Display(Name = "Photo")]
         public string Photo { get; set; }

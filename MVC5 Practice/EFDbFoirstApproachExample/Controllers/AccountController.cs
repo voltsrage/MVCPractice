@@ -66,6 +66,7 @@ namespace EFDbFoirstApproachExample.Controllers
         }
 
         [HttpPost]
+        [OverrideExceptionFilters]
         public ActionResult Login(LoginViewModel lvm)
         {
             var appDbContext = new ApplicationDbContext();
@@ -82,6 +83,10 @@ namespace EFDbFoirstApproachExample.Controllers
                 if(userManager.IsInRole(user.Id,"Admin"))
                 {
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
+                }
+                else if (userManager.IsInRole(user.Id, "Manager"))
+                {
+                    return RedirectToAction("Index", "Home", new { area = "Manager" });
                 }
                 else
                 {

@@ -1,17 +1,16 @@
-﻿using EFDbFoirstApproachExample.Filters;
-using EFDbFoirstApproachExample.Models;
+﻿using EFDbFoirstApproachExample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EFDbFoirstApproachExample.Filters;
 
-
-namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
+namespace EFDbFoirstApproachExample.Areas.Manager.Controllers
 {
-    [AdminAuthorization]
+    [ManagerAuthorization]
     public class ProductsController : Controller
-    {        
+    {
         // GET: Products
         public ActionResult Index(string search = "", string SortColumn = "ProductName", string IconClass = "fa-sort-asc", int PageNo = 1)
         {
@@ -164,32 +163,15 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
                 }
 
 
-                
+
                 return RedirectToAction("Index", "Products");
             }
             else
             {
                 return View();
             }
-        }
+        }       
 
-        public ActionResult Delete(long id)
-        {
-            TrentBasDbContext db = new TrentBasDbContext();
-            Product deleteProduct = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
-
-            return View(deleteProduct);
-        }
-
-        [HttpPost]
-        public ActionResult Delete(Product p, long id)
-        {
-            TrentBasDbContext db = new TrentBasDbContext();
-            Product deleteProduct = db.Products.Where(prod => prod.ProductID == id).FirstOrDefault();
-
-            db.Products.Remove(deleteProduct);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Products");
-        }
+        
     }
 }

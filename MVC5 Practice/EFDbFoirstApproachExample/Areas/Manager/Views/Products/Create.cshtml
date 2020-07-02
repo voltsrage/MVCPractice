@@ -1,0 +1,69 @@
+﻿@model EFDbFoirstApproachExample.Models.Product
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Manager/Views/Shared/ManagerLayoutPage1.cshtml";
+}
+
+<h2>Create Product</h2>
+@using (Html.BeginForm("Create", "Products", new { area = "Manager"},FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(temp => Model.ProductName)
+            @Html.TextBoxFor(temp => temp.ProductName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.ProductName)
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(temp => Model.Price)
+            @Html.TextBoxFor(temp => temp.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(temp => temp.Price)
+        </div>
+    </div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="DateofPurchase">Date of Purchase</label>
+        <input type="date" class="form-control" name="DateofPurchase" id="DateofPurchase" placeholder="Date of Purchase" />
+        @Html.ValidationMessageFor(temp => temp.DateOfPurchase)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.LabelFor(temp => Model.AvailabilityStatus)
+        @Html.DropDownListFor(temp => Model.AvailabilityStatus, new List<SelectListItem>()
+   {
+       new SelectListItem() {Text="In Stock",Value = "InStock"},
+       new SelectListItem() {Text="Out of Stock",Value = "OutOfStock"}
+   }, "Please Select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.AvailabilityStatus)
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        @Html.LabelFor(temp => Model.CategoryID)
+        @Html.DropDownListFor(temp => Model.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"),
+ "Please Select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.CategoryID)
+    </div>
+    <div class="form-group col-md-6">
+        @Html.LabelFor(temp => Model.BrandID)
+        @Html.DropDownListFor(temp => Model.BrandID, new SelectList(ViewBag.Brands, "BrandID", "BrandName"),
+ "Please Select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.BrandID)
+    </div>
+</div>
+<div class="form-group">
+    <label for="Image">Image</label>
+    <input type="file" class="form-control-file" id="Image" name="Photo" />
+</div>
+<div class="form-group">
+    <div class="form-check">
+        <input class="form-check-input" name="Active" type="checkbox" id="Active" value="true" />
+        <label class="form-check-label" for="Active">
+            Active
+        </label>
+    </div>
+</div>
+
+@Html.ValidationSummary()
+<button type="submit" class="btn btn-success">Create</button>
+<a class="btn btn-danger" href="/manager/products/index">Cancel</a>
+}
+
