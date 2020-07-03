@@ -11,7 +11,8 @@ namespace EFDbFoirstApproachExample
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new MyExceptionFilter());
+            //filters.Add(new MyExceptionFilter());
+            filters.Add(new HandleErrorAttribute() { ExceptionType = typeof(Exception),View="Error"});
         }
     }
 }

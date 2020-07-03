@@ -12,6 +12,7 @@ namespace EFDbFoirstApproachExample.Controllers
         // GET: Home
         [MyActionFilter]
         [MyResultFilter]
+        [OutputCache(Duration = 60)]
         public ActionResult Index()
         {
             return View();

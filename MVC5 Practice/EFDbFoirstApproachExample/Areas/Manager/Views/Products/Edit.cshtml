@@ -8,6 +8,7 @@
 <h2>Edit Product</h2>
 @using (Html.BeginForm("Edit", "Products", new { area = "Manager" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(temp=>temp.ProductID)
     <div class="form-row">
         <div class="form-group col-md-6">

@@ -11,7 +11,7 @@ namespace EFDbFoirstApproachExample.Filters
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if(!filterContext.HttpContext.User.Identity.IsAuthenticated == false)
+            if(filterContext.HttpContext.User.Identity.IsAuthenticated == false)
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }

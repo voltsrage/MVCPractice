@@ -100,6 +100,7 @@ namespace EFDbFoirstApproachExample.Areas.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Product p)
         {
             TrentBasDbContext db = new TrentBasDbContext();
@@ -134,6 +135,7 @@ namespace EFDbFoirstApproachExample.Areas.Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Product p)
         {
             TrentBasDbContext db = new TrentBasDbContext();

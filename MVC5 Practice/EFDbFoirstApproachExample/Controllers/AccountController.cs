@@ -14,7 +14,8 @@ namespace EFDbFoirstApproachExample.Controllers
     public class AccountController : Controller
     {
         // GET: Account
-        public ActionResult Register()
+        [ActionName("Register")]
+        public ActionResult RegistrationPage()
         {
             return View();
         }
@@ -66,7 +67,7 @@ namespace EFDbFoirstApproachExample.Controllers
         }
 
         [HttpPost]
-        [OverrideExceptionFilters]
+       
         public ActionResult Login(LoginViewModel lvm)
         {
             var appDbContext = new ApplicationDbContext();
@@ -80,7 +81,7 @@ namespace EFDbFoirstApproachExample.Controllers
                 var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);
 
-                if(userManager.IsInRole(user.Id,"Admin"))
+                if (userManager.IsInRole(user.Id,"Admin"))
                 {
                     return RedirectToAction("Index", "Home", new { area = "Admin" });
                 }
@@ -99,6 +100,14 @@ namespace EFDbFoirstApproachExample.Controllers
                 return View();
             }
             
+        }
+
+        [NonAction]
+        public void LoginUser(ApplicationUserManager userManager,ApplicationUser user)
+        {
+            var authenticationManager = HttpContext.GetOwinContext().Authentication;
+            var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+            authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);
         }
 
         public ActionResult Logout()

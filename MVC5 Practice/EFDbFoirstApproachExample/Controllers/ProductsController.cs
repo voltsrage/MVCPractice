@@ -13,14 +13,19 @@ namespace EFDbFoirstApproachExample.Controllers
         // GET: Products
         [MyAuthenticationFilter]
         [CustomerAuthorization]
-        [ManagerAuthorization]
-        [AdminAuthorization]        
+        [MyActionFilter]       
         public ActionResult Index()
         {
 
             TrentBasDbContext db = new TrentBasDbContext();
             List < Product > products = db.Products.ToList();
             return View(products);
+        }
+
+        [ChildActionOnly]
+        public ActionResult DisplaySingleProduct(Product p)
+        {
+            return PartialView("MyProduct", p);
         }
     }
 }
