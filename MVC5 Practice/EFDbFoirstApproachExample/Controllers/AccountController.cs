@@ -1,5 +1,5 @@
 ﻿using EFDbFoirstApproachExample.Identity;
-using EFDbFoirstApproachExample.ViewModels;
+using TrentBas.DomainModels.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System;
@@ -91,7 +91,7 @@ namespace EFDbFoirstApproachExample.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Action", "Home");
+                    return RedirectToAction("Index", "Home");
                 }                
             }
             else

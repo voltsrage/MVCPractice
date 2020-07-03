@@ -5,14 +5,14 @@ namespace EFDbFoirstApproachExample.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EFDbFoirstApproachExample.Models.TrentBasDbContext>
+    public class Configuration : DbMigrationsConfiguration<TrentBas.DataLayer.TrentBasDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(EFDbFoirstApproachExample.Models.TrentBasDbContext context)
+        protected override void Seed(TrentBas.DataLayer.TrentBasDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

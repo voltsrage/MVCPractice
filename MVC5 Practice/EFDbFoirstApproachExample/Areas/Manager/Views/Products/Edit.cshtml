@@ -1,4 +1,4 @@
-﻿@model EFDbFoirstApproachExample.Models.Product
+﻿@model TrentBas.DomainModels.Models.Product;
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Manager/Views/Shared/ManagerLayoutPage1.cshtml";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Edit", "Products", new { area = "Manager" }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(temp=>temp.ProductID)
+    @Html.HiddenFor(temp => temp.ProductID)
     <div class="form-row">
         <div class="form-group col-md-6">
             @Html.LabelFor(temp => Model.ProductName)

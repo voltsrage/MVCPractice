@@ -7,6 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstApp", "FirstApp\FirstA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFDbFoirstApproachExample", "EFDbFoirstApproachExample\EFDbFoirstApproachExample.csproj", "{4A2BC2E5-C6CB-4597-8E11-6A477D373296}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrentBas.DataLayer", "TrentBas.DataLayer\TrentBas.DataLayer.csproj", "{05D6DA21-1AC6-40E1-BC5B-DCB3D56DBFE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrentBas.DomainModels", "TrentBas.DomainModels\TrentBas.DomainModels.csproj", "{18261282-E7E7-4D7A-A62C-42CA97EDE46E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrentBas.ServiceLayer", "TrentBas.ServiceLayer\TrentBas.ServiceLayer.csproj", "{CD167D8F-FE9F-4643-8B75-3474C053BBAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrentBas.ServiceContracts", "TrentBas.ServiceContracts\TrentBas.ServiceContracts.csproj", "{1E996F82-8153-4424-A8CF-8EBB19E1F9E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrentBas.RepositoryContracts", "TrentBas.RepositoryContracts\TrentBas.RepositoryContracts.csproj", "{F21C21DD-EB89-457F-84D4-98D97B4E6BDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrentBas.RepositoryLayer", "TrentBas.RepositoryLayer\TrentBas.RepositoryLayer.csproj", "{7386F09A-3089-46A2-A319-FDB9B32F3D63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +33,30 @@ Global
 		{4A2BC2E5-C6CB-4597-8E11-6A477D373296}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A2BC2E5-C6CB-4597-8E11-6A477D373296}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A2BC2E5-C6CB-4597-8E11-6A477D373296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05D6DA21-1AC6-40E1-BC5B-DCB3D56DBFE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D6DA21-1AC6-40E1-BC5B-DCB3D56DBFE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D6DA21-1AC6-40E1-BC5B-DCB3D56DBFE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D6DA21-1AC6-40E1-BC5B-DCB3D56DBFE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18261282-E7E7-4D7A-A62C-42CA97EDE46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18261282-E7E7-4D7A-A62C-42CA97EDE46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18261282-E7E7-4D7A-A62C-42CA97EDE46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18261282-E7E7-4D7A-A62C-42CA97EDE46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD167D8F-FE9F-4643-8B75-3474C053BBAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD167D8F-FE9F-4643-8B75-3474C053BBAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD167D8F-FE9F-4643-8B75-3474C053BBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD167D8F-FE9F-4643-8B75-3474C053BBAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E996F82-8153-4424-A8CF-8EBB19E1F9E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E996F82-8153-4424-A8CF-8EBB19E1F9E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E996F82-8153-4424-A8CF-8EBB19E1F9E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E996F82-8153-4424-A8CF-8EBB19E1F9E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F21C21DD-EB89-457F-84D4-98D97B4E6BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F21C21DD-EB89-457F-84D4-98D97B4E6BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F21C21DD-EB89-457F-84D4-98D97B4E6BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F21C21DD-EB89-457F-84D4-98D97B4E6BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7386F09A-3089-46A2-A319-FDB9B32F3D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7386F09A-3089-46A2-A319-FDB9B32F3D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7386F09A-3089-46A2-A319-FDB9B32F3D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7386F09A-3089-46A2-A319-FDB9B32F3D63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

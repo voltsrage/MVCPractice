@@ -1,0 +1,5 @@
+Message: A public action method 'Action' was not found on controller 'EFDbFoirstApproachExample.Controllers.HomeController'., Type: System.Web.HttpException, Source: System.Web.Mvc
+Message: A public action method 'Action' was not found on controller 'EFDbFoirstApproachExample.Controllers.HomeController'., Type: System.Web.HttpException, Source: System.Web.Mvc
+Message: A public action method 'Action' was not found on controller 'EFDbFoirstApproachExample.Controllers.HomeController'., Type: System.Web.HttpException, Source: System.Web.Mvc
+Message: A public action method 'Action' was not found on controller 'EFDbFoirstApproachExample.Controllers.HomeController'., Type: System.Web.HttpException, Source: System.Web.Mvc
+Message: Object reference not set to an instance of an object., Type: System.NullReferenceException, Source: App_Web_kdkdjflv

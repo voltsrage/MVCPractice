@@ -1,11 +1,12 @@
-﻿using EFDbFoirstApproachExample.CustomValidations;
+﻿using TrentBas.DomainModels.CustomValidations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace EFDbFoirstApproachExample.Models
+namespace TrentBas.DomainModels.Models
 {
     public class Product
     {
@@ -25,7 +26,7 @@ namespace EFDbFoirstApproachExample.Models
         public Nullable<decimal> Price { get; set; }
 
         [Display(Name = "Date Of Purchase")]
-        [DisplayFormat(DataFormatString ="MM/dd/yyyy",ApplyFormatInEditMode =true)]
+        [DisplayFormat(DataFormatString = "MM/dd/yyyy", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> DateOfPurchase { get; set; }
 
         [Display(Name = "Availability Status")]

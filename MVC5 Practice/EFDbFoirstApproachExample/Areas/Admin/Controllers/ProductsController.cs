@@ -1,23 +1,35 @@
 ﻿using EFDbFoirstApproachExample.Filters;
-using EFDbFoirstApproachExample.Models;
+using TrentBas.DomainModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TrentBas.DataLayer;
+using TrentBas.ServiceContracts;
+using TrentBas.ServiceLayer;
 
 
 namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
 {
     [AdminAuthorization]
     public class ProductsController : Controller
-    {        
+    {
+        TrentBasDbContext db;
+        IService<Product> prodService;
+        
+        public ProductsController(ProductService ProductService)
+        {
+            this.db = new TrentBasDbContext();
+            this.prodService = ProductService;
+        }
+       
         // GET: Products
         public ActionResult Index(string search = "", string SortColumn = "ProductName", string IconClass = "fa-sort-asc", int PageNo = 1)
         {
             TrentBasDbContext db = new TrentBasDbContext();
             ViewBag.search = search;
-            List<Product> products = db.Products.Where(p => p.ProductName.Contains(search)).ToList();
+            List<Product> products = prodService.SearchT(search);
 
             ViewBag.SortColumn = SortColumn;
             ViewBag.IconClass = IconClass;
@@ -86,15 +98,13 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
         }
 
         public ActionResult Details(long id)
-        {
-            TrentBasDbContext db = new TrentBasDbContext();
-            Product product = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
+        {           
+            Product product = prodService.GetTByTID(id);
             return View(product);
         }
 
         public ActionResult Create()
-        {
-            TrentBasDbContext db = new TrentBasDbContext();
+        {           
             ViewBag.Categories = db.Categories.ToList();
             ViewBag.Brands = db.Brands.ToList();
             return View();
@@ -103,8 +113,7 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Product p)
-        {
-            TrentBasDbContext db = new TrentBasDbContext();
+        {            
             if (ModelState.IsValid)
             {
                 if (Request.Files.Count >= 1)
@@ -115,8 +124,7 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
                     var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
                     p.Photo = base64String;
                 }
-                db.Products.Add(p);
-                db.SaveChanges();
+                prodService.InsertT(p);
                 return RedirectToAction("Index");
             }
             else
@@ -126,12 +134,10 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
         }
 
         public ActionResult Edit(long id)
-        {
-            TrentBasDbContext db = new TrentBasDbContext();
+        {            
             ViewBag.Categories = db.Categories.ToList();
             ViewBag.Brands = db.Brands.ToList();
-            Product existingProduct = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
-
+            Product existingProduct = prodService.GetTByTID(id);
             return View(existingProduct);
         }
 
@@ -162,7 +168,7 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
                     existingProduct.AvailabilityStatus = p.AvailabilityStatus;
                     existingProduct.Active = p.Active;
 
-                    db.SaveChanges();
+                    prodService.UpdateT(existingProduct);
                 }
 
 
@@ -177,8 +183,7 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
 
         public ActionResult Delete(long id)
         {
-            TrentBasDbContext db = new TrentBasDbContext();
-            Product deleteProduct = db.Products.Where(p => p.ProductID == id).FirstOrDefault();
+            Product deleteProduct = prodService.GetTByTID(id);
 
             return View(deleteProduct);
         }
@@ -186,11 +191,8 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(Product p, long id)
         {
-            TrentBasDbContext db = new TrentBasDbContext();
-            Product deleteProduct = db.Products.Where(prod => prod.ProductID == id).FirstOrDefault();
 
-            db.Products.Remove(deleteProduct);
-            db.SaveChanges();
+            prodService.Delete(id);
             return RedirectToAction("Index", "Products");
         }
     }
