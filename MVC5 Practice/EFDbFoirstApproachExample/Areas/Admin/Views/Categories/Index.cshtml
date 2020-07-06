@@ -1,20 +1,75 @@
-﻿@model List<TrentBas.DomainModels.Models.Category>
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
 }
 
 <h2>Categories</h2>
-<table class="table">
+<button type="button" id="btnGetCategories" class="btn btn-info">Get Categories</button>
+<table class="table categoriesTable">
     <tr>
         <td>Category ID</td>
         <td>Category Name</td>
     </tr>
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>@item.CategoryID</td>
-        <td>@item.CategoryName</td>
-    </tr>
-    }
+
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="ViewCategoryModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">View Category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <td>Category ID</td>
+                        <td><span id="CategoryIDSpan"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Category Name</td>
+                        <td><span id="CategoryNameSpan"></span></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#btnGetCategories").click(() => {
+        $.ajax({
+            type: "GET", url: "/api/Categories", success: (response) => {
+                for (var i = 0; i < response.length; i++) {
+                    var br = response[i];
+                    var str = "<tr><td>" + (i + 1) + "</td>  <td>" + br.CategoryName +
+                        "</td> <td><button type='button' class='btn btn-info ViewCategoryButton' data-categoryid='" + br.CategoryID + "'data-toggle='modal' data-target='#ViewCategoryModel'>View</button></td>  </tr>";
+                    $(".categoriesTable").append(str);
+                }
+            }, error: (err) => {
+                alert(err);
+                console.log(err);
+            }
+        });
+    });
+
+    $(document).on("click", ".ViewCategoryButton", (event) => {
+        var cid = $(event.target).attr("data-categoryid");
+        $.ajax({
+            type: "GET", url: "/api/Categories?categoryid=" + cid, success: (response) => {
+                $("#CategoryIDSpan").html(response.CategoryID);
+                $("#CategoryNameSpan").html(response.CategoryName);
+            }, error: (err) => {
+                alert(err);
+                console.log(err);
+            }
+        });
+    });
+</script>

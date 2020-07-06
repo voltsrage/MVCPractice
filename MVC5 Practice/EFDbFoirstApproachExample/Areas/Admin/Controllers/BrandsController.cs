@@ -15,9 +15,8 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
         // GET: Admin/Brands
         public ActionResult Index()
         {
-            TrentBasDbContext db = new TrentBasDbContext();
-            List<Brand> brands = db.Brands.ToList();
-            return View(brands);
+            
+            return View();
         }
     }
 }

@@ -20,5 +20,6 @@ namespace EFDbFoirstApproachExample.Areas.Admin.Controllers
             List<Category> categories = db.Categories.ToList();
             return View(categories);
         }
+        
     }
 }
